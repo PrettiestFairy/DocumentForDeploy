@@ -41,47 +41,47 @@ make && make install
 此配置文件Nginx使用，配置路由信息，可以参考如下例子手工配置，也可以使用以下指令完成：
 
 ```
-#在目标服务器（192.168.0.1）app用户下修改执行
+#在目标服务器（10.0.10.1）app用户下修改执行
 cat > /data/projects/fate/proxy/nginx/conf/route_table.yaml << EOF
 default:
   proxy:
-    - host: 192.168.0.2
+    - host: 10.0.10.2
       port: 9390
 10000:
   proxy:
-    - host: 192.168.0.1
+    - host: 10.0.10.1
       port: 9390
   fateflow:
-    - host: 192.168.0.1
+    - host: 10.0.10.1
       port: 9360
 9999:
   proxy:
-    - host: 192.168.0.2
+    - host: 10.0.10.2
       port: 9390
   fateflow:
-    - host: 192.168.0.2
+    - host: 10.0.10.2
       port: 9360
 EOF
 
-#在目标服务器（192.168.0.2）app用户下修改执行
+#在目标服务器（10.0.10.2）app用户下修改执行
 cat > /data/projects/fate/proxy/nginx/conf/route_table.yaml << EOF
 default:
   proxy:
-    - host: 192.168.0.1
+    - host: 10.0.10.1
       port: 9390
 10000:
   proxy:
-    - host: 192.168.0.1
+    - host: 10.0.10.1
       port: 9390
   fateflow:
-    - host: 192.168.0.1
+    - host: 10.0.10.1
       port: 9360
 9999:
   proxy:
-    - host: 192.168.0.2
+    - host: 10.0.10.2
       port: 9390
   fateflow:
-    - host: 192.168.0.2
+    - host: 10.0.10.2
       port: 9360
 EOF
 ```
