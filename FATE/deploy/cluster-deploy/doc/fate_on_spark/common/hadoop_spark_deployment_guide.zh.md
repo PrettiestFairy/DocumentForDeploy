@@ -2,14 +2,14 @@
 
 ## 1.集群规划
 
-| 节点名称   | 主机名         | IP地址      | 操作系统     |
-| -------- | ------------- | ----------- | ---------- |
+
+| 节点名称 | 主机名   | IP地址    | 操作系统   |
+| ---------- | ---------- | ----------- | ------------ |
 | Master   | server-1 | 10.0.10.1 | CentOS 7.2 |
 | Slave1   | server-2 | 10.0.10.2 | CentOS 7.2 |
 | Slave2   | server-3 | 10.0.10.3 | Centos 7.2 |
 
 ## 2.基础环境配置
-
 
 ### 2.1 hostname配置
 
@@ -313,7 +313,6 @@ cd /data/projects/common/hadoop/etc/hadoop
                 <value>true</value>
         </property>
 </configuration>
-
 ```
 
 - hdfs-site.xml
@@ -411,7 +410,6 @@ cd /data/projects/common/hadoop/etc/hadoop
         <value>NEVER</value>
     </property>
 </configuration>
-
 ```
 
 - mapred-site.xml
@@ -441,7 +439,6 @@ cd /data/projects/common/hadoop/etc/hadoop
         <value>yarn</value>
     </property>
 </configuration>
-
 ```
 
 - yarn-site.xml
@@ -529,7 +526,6 @@ cd /data/projects/common/hadoop/etc/hadoop
         <value>97.0</value>
     </property>
 </configuration>
-
 ```
 
 **\#新建目录**
@@ -611,11 +607,13 @@ http://10.0.10.1:8088 查看yarn集群状态
 cd /data/projects/common/spark/conf 
 cat slaves
 ```
+
 加入 server-2 server-3
 
 ```bash
 cat spark-defaults.conf
 ```
+
 加入
 
 spark.master yarn
@@ -659,16 +657,15 @@ export PYSPARK_DRIVER_PYTHON=/data/projects/fate/common/python/venv/bin/python
 **\#启动**
 
 ```bash
-sh /data/projects/common/spark/spark-2.4.1-bin-hadoop2.7/sbin/start-all.sh
+sh /data/projects/common/spark/sbin/start-all.sh
 ```
 
 **\#验证**
 
 ```bash
-cd /data/projects/common/spark/spark-2.4.1-bin-hadoop2.7/jars
+cd /data/projects/common/spark/jars
 hdfs dfs -mkdir -p /tmp/spark/jars
 hdfs dfs -mkdir -p /tmp/spark/event
 hdfs dfs -put *jar /tmp/spark/jars
-/data/projects/common/spark/bin/spark-shell --master yarn --deploy-mode client 
+/data/projects/common/spark/bin/spark-shell --master yarn --deploy-mode client
 ```
-
