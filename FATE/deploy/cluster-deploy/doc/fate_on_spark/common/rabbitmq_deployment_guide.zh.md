@@ -64,7 +64,7 @@ wget https://github.com/erlang/otp/releases/download/OTP-25.0.3/otp_src_25.0.3.t
 * **下载RabbitMq Server安装包，并解压至/data/projects/fate/common**
 
   ```bash
-  tar xz -d rabbitmq-server-generic-unix-3.6.15.tar.xz
+  xz -d rabbitmq-server-generic-unix-3.6.15.tar.xz
   tar xvf rabbitmq-server-generic-unix-3.6.15.tar
   ```
 
