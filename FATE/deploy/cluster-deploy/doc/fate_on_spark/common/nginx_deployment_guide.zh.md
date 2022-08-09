@@ -3,7 +3,7 @@
 ### 1. 依赖下载
 
 ```shell
-mkdir -r /data/projects/install && cd /data/projects/install
+mkdir -p /data/projects/install && cd /data/projects/install
 wget https://webank-ai-1251170195.cos.ap-guangzhou.myqcloud.com/openresty-1.17.8.2.tar.gz
 ```
 
