@@ -4,30 +4,30 @@
 
 ## 1.服务器配置
 
-|  服务器  |                                                                                    |
-| :------: | ---------------------------------------------------------------------------------- |
-|   数量   | > 1（根据实际情况配置）                                                             |
-|   配置   | 8 core /16GB memory / 500GB硬盘/10M带宽                                            |
-| 操作系统 | CentOS linux 7.2及以上/Ubuntu 16.04 以上                                           |
-|  依赖包  | （参见4.5 软件环境初始化）                                                         |
-|   用户   | 用户：app，属主：apps（app用户需可以sudo su root而无需密码）                       |
+| 服务器  |                                                               |
+|:----:|---------------------------------------------------------------|
+|  数量  | > 1（根据实际情况配置）                                                 |
+|  配置  | 8 core /16GB memory / 500GB硬盘/10M带宽                           |
+| 操作系统 | CentOS linux 7.2及以上/Ubuntu 16.04 以上                           |
+| 依赖包  | （参见4.5 软件环境初始化）                                               |
+|  用户  | 用户：app，属主：apps（app用户需可以sudo su root而无需密码）                     |
 | 文件系统 | 1. 500G硬盘挂载在/ data目录下； 2.创建/ data / projects目录，目录属主为：app:apps |
 
 ## 2.集群规划
 
-| party  | partyid | 主机名        | IP地址    | 操作系统                | 安装软件            | 服务                              |
-| ------ | ------- | ------------- | --------- | ----------------------- | ------------------- | --------------------------------- |
-| PartyA | 10000   | VM-0-1-centos | 10.0.10.1 | CentOS 7.2/Ubuntu 16.04 | fate，mysql, nginx  | fateflow，fateboard，mysql，nginx |
-| PartyA | 10000   |               |           |                         | Spark、HDFS         |                                   |
-| PartyA | 10000   |               |           |                         | RabbitMQ(或pulsar ) |                                   |
-| PartyB | 9999    | VM-0-2-centos | 10.0.10.2 | CentOS 7.2/Ubuntu 16.04 | fate，mysql, nginx  | fateflow，fateboard，mysql，nginx |
-| PartyB | 9999    |               |           |                         | Spark、HDFS         |                                   |
-| PartyB | 9999    |               |           |                         | RabbitMQ(或pulsar ) |                                   |
+|  party   | partyid | 主机名           | IP地址      | 操作系统                    | 安装软件               | 服务                             |
+|:--------:|---------|---------------|-----------|-------------------------|--------------------|--------------------------------|
+|  PartyA  | 10000   | VM-0-1-centos | 10.0.10.1 | CentOS 7.2/Ubuntu 16.04 | fate，mysql, nginx  | fateflow，fateboard，mysql，nginx |
+|  PartyA  | 10000   |               |           |                         | Spark、HDFS         |                                |
+|  PartyA  | 10000   |               |           |                         | RabbitMQ(或pulsar ) |                                |
+|  PartyB  | 9999    | VM-0-2-centos | 10.0.10.2 | CentOS 7.2/Ubuntu 16.04 | fate，mysql, nginx  | fateflow，fateboard，mysql，nginx |
+|  PartyB  | 9999    |               |           |                         | Spark、HDFS         |                                |
+|  PartyB  | 9999    |               |           |                         | RabbitMQ(或pulsar ) |                                |
 
 架构图：
 
 | ![](../../images/fate_on_spark_architecture.png) |
-| :----------------------------------------------: |
+|:------------------------------------------------:|
 
 ## 3.组件说明
 
@@ -535,30 +535,30 @@ fate_on_spark:
 
 - Spark的相关配置
 
-    - home为Spark home绝对路径
-    - cores_per_node为Spark集群每个节点的cpu核数
-    - nodes为Spark集群节点数量
+	- home为Spark home绝对路径
+	- cores_per_node为Spark集群每个节点的cpu核数
+	- nodes为Spark集群节点数量
 - HDFS的相关配置
 
-    - name_node为hdfs的namenode完整地址
-    - path_prefix为默认存储路径前缀，若不配置则默认为/
+	- name_node为hdfs的namenode完整地址
+	- path_prefix为默认存储路径前缀，若不配置则默认为/
 - RabbitMQ相关配置
 
-    - host: 主机ip
-    - mng_port: 管理端口
-    - port: 服务端口
-    - user：管理员用户
-    - password: 管理员密码
-    - route_table: 路由表信息，默认为空
+	- host: 主机ip
+	- mng_port: 管理端口
+	- port: 服务端口
+	- user：管理员用户
+	- password: 管理员密码
+	- route_table: 路由表信息，默认为空
 - pulsar相关配置
 
-    - host: 主机ip
-    - port: brokerServicePort
-    - mng_port: webServicePort
-    - cluster：集群或单机
-    - tenant: 合作方需要使用同一个tenant
-    - topic_ttl： 回收资源参数
-    - route_table: 路由表信息，默认为空
+	- host: 主机ip
+	- port: brokerServicePort
+	- mng_port: webServicePort
+	- cluster：集群或单机
+	- tenant: 合作方需要使用同一个tenant
+	- topic_ttl： 回收资源参数
+	- route_table: 路由表信息，默认为空
 
 ##### 6.3.3 spark依赖分发模式(仅适用spark集群版本)
 
